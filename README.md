@@ -1,4 +1,13 @@
 # Automatic ECG diagnosis using a deep neural network
+
+## Disclaimer
+
+This is a forked version of the original repository [antonior92/automatic-ecg-diagnosis](https://github.com/antonior92/automatic-ecg-diagnosis). All credit goes to the authors of the original project.
+
+In this fork, I made a few changes to adapt the tool to the Health Big Data project's needs. To facilitate the identification of my changes in the code, simply look for comments starting with the string "PierMOD".
+
+## Brief description of the repository
+
 Scripts and modules for training and testing deep neural networks for ECG automatic classification.
 Companion code to the paper "Automatic diagnosis of the 12-lead ECG using a deep neural network".
  https://www.nature.com/articles/s41467-020-15432-4.
