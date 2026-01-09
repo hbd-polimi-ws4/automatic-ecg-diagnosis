@@ -1,4 +1,5 @@
-numpy>=1.14.3
+# To be installed with Python 3.8!
+numpy>=1.14.3, <1.20
 pandas>=0.22
 tensorflow==2.2
 h5py>=2.8
@@ -9,3 +10,7 @@ tqdm>=4.26
 xarray>=0.11.2
 seaborn>=0.9
 openpyxl>=3.0
+protobuf<3.20
+# The numpy requirement has been modified and the protobuf one added as suggested in PullRequest
+# https://github.com/antonior92/automatic-ecg-diagnosis/pull/36.
+# The original numpy requirement was "numpy>=1.14.3".

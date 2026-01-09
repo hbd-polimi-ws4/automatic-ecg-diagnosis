@@ -130,3 +130,16 @@ dmypy.json
 
 # Avoid large files
 *.hdf5
+
+# Ignore the models, as these can be found on Zenodo: https://doi.org/10.5281/zenodo.3765717
+model/
+
+# Ignore the test data, as these can be found on Zenodo: https://doi.org/10.5281/zenodo.3765780
+test_data/
+
+# VSCode configuration files
+.vscode/
+
+# Ignore default output files
+dnn_output.csv
+dnn_output.npy

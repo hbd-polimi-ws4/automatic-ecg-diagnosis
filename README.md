@@ -106,7 +106,7 @@ Pre-trained models obtained using such script can be downloaded from [here](http
 
 - ``predict.py``: Script for generating the neural network predictions on a given dataset.
 ```bash
-$ python predict.py PATH_TO_HDF5_ECG_TRACINGS PATH_TO_MODEL  --ouput_file PATH_TO_OUTPUT_FILE 
+$ python predict.py PATH_TO_HDF5_ECG_TRACINGS PATH_TO_MODEL  --output_file PATH_TO_OUTPUT_FILE 
 ```
 The folder `./dnn_predicts` contain the output obtained by applying this script to the models available in
 [here](https://doi.org/10.5281/zenodo.3625017) to make the predictions on tracings from 
