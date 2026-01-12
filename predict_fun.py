@@ -1,14 +1,28 @@
 import numpy as np
+import h5py
 import warnings
 warnings.filterwarnings("ignore")
 from tensorflow.keras.models import load_model
 from tensorflow.keras.optimizers import Adam
 from datasets import ECGSequence
 
+def write_hdf5_from_matlab(hdf5_out_path, hdf5_dataset_name, matlab_array):
+
+    data_array = np.array(matlab_array)
+
+    if data_array.ndim<3:
+        data_array = np.expand_dims(data_array,axis=0)
+
+    with h5py.File(hdf5_out_path, 'w') as f:
+        dset = f.create_dataset(
+            hdf5_dataset_name,
+            data=data_array
+        )
+
 
 def predict_diagnosis(path_to_hdf5, path_to_model,
                       dataset_name='tracings',
-                      output_csv_file="./dnn_output.csv",
+                      output_csv_file='',
                       bs=32):
 
     # Import data
@@ -26,7 +40,9 @@ def predict_diagnosis(path_to_hdf5, path_to_model,
     import pandas as pd
 
     # Create dataframe with prediction scores from numpy array (one row for
-    # each ECG and one column for each diagnosis)
+    # each ECG and one column for each diagnosis). The order of the diagnoses
+    # in the columns of the y_score array is reported both in the README and in
+    # the script "generate_figures_and_tables.py"
     diagnosis = np.array(['1dAVb', 'RBBB', 'LBBB', 'SB', 'AF', 'ST'])
     df = pd.DataFrame(y_score, columns=diagnosis)
 
@@ -49,6 +65,9 @@ def predict_diagnosis(path_to_hdf5, path_to_model,
     df['PredictedLabels'] = y_labels
 
     # Save dataframe to CSV file
-    df.to_csv(output_csv_file, index=False, sep=',')
-
-    print("CSV output with prediction scores and labels saved")
+    if output_csv_file != '':
+        df.to_csv(output_csv_file, index=False, sep=',')
+        print("CSV output with prediction scores and labels saved")
+    
+    # Return the dataframe and its constituent elements separately (y_score,diagnosis,y_labels)
+    return df,y_score,diagnosis.tolist(),y_labels

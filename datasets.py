@@ -20,9 +20,10 @@ class ECGSequence(Sequence):
             self.y = None
         else:
             self.y = pd.read_csv(path_to_csv).values
-        # Get tracings
-        self.f = h5py.File(path_to_hdf5, "r")
-        self.x = self.f[hdf5_dset]
+        # Get tracings (PierMOD: we use the "with" statement and load the entire dataset of ECG tracings
+        # to ensure we close the file afterwards)
+        with h5py.File(path_to_hdf5, 'r') as self.f:
+            self.x = self.f[hdf5_dset][:]
         self.batch_size = batch_size
         if end_idx is None:
             end_idx = len(self.x)
