@@ -4,7 +4,7 @@
 
 This is a forked version of the original repository [antonior92/automatic-ecg-diagnosis](https://github.com/antonior92/automatic-ecg-diagnosis). All credit goes to the authors of the original project.
 
-In this fork, I made a few changes to adapt the tool to the Health Big Data project's needs. To facilitate the identification of my changes in the code, simply look for comments starting with the string "PierMOD".
+In this fork, we made a few changes to adapt the tool to the Health Big Data project's needs. To facilitate the identification of our changes to the code, simply look for comments starting with the string "PierMOD". Additionally, we included the `predict_fun.py` function, based on the script `predict.py` provided in the original repo, to allow our ECG pipeline call this tool from Matlab as a function.
 
 ## Brief description of the repository
 
