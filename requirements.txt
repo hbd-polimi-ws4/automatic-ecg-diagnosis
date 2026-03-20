@@ -11,6 +11,10 @@ xarray>=0.11.2
 seaborn>=0.9
 openpyxl>=3.0
 protobuf<3.20
+psutil>=7.2.2
 # The numpy requirement has been modified and the protobuf one added as suggested in PullRequest
 # https://github.com/antonior92/automatic-ecg-diagnosis/pull/36.
 # The original numpy requirement was "numpy>=1.14.3".
+# Also, psutil has been added to perform regular checks on the memory used by the Python process
+# started in Matlab and restart the related Python environment when memory allocation exceeds a
+# certain threshold.
